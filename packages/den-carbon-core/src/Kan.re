@@ -104,7 +104,6 @@ module Config = {
                ),
             "Using default config temporarily",
           );
-          /* Js.log(Js.Exn.stack(err)); */
           ((.) => make());
         }
       };

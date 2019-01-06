@@ -7,7 +7,6 @@
 # bucklescript
 .bsb.lock
 **/lib/
-*.bs.js
 
 # npm
 npm-debug.log
