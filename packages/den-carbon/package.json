@@ -4,24 +4,18 @@
   "version": "0.0.13",
   "license": "MIT",
   "bin": {
-    "o": "dist/carbon"
+    "o": "src/carbon"
   },
   "scripts": {
     "install-carbon-dev": "npm link",
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
-    "roll": "rollup -c && cp './src/carbon' './dist/carbon'",
-    "pack": "webpack",
-    "prepublishOnly": "yarn run build && yarn run roll"
+    "prepublishOnly": "yarn run build"
   },
   "keywords": [],
   "devDependencies": {
-    "bs-platform": "^4.0.17",
-    "rollup": "^1.0.2",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-node-resolve": "^4.0.0"
+    "bs-platform": "^4.0.17"
   },
   "dependencies": {
     "den-carbon-core": "^0.0.13",

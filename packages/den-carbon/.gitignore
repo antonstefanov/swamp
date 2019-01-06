@@ -18,6 +18,3 @@ package-lock.json
 
 # keep these
 !.gitkeep
-
-# rollup and builds
-/dist/
