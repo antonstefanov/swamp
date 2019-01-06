@@ -1,7 +1,7 @@
 {
   "name": "den-carbon",
   "private": false,
-  "version": "0.0.10",
+  "version": "0.0.11",
   "license": "MIT",
   "bin": {
     "o": "dist/carbon"
@@ -24,10 +24,10 @@
     "rollup-plugin-node-resolve": "^4.0.0"
   },
   "dependencies": {
-    "den-carbon-core": "^0.0.10",
-    "den-crystal": "^0.0.10",
-    "den-packs-core": "^0.0.10",
-    "den-seed": "^0.0.10",
+    "den-carbon-core": "^0.0.11",
+    "den-crystal": "^0.0.11",
+    "den-packs-core": "^0.0.11",
+    "den-seed": "^0.0.11",
     "yargs": "^12.0.2"
   },
   "repository": {
