@@ -4,7 +4,7 @@
   "version": "0.0.2",
   "license": "MIT",
   "bin": {
-    "o": "src/carbon"
+    "o": "dist/carbon"
   },
   "scripts": {
     "install-carbon-dev": "npm link",
