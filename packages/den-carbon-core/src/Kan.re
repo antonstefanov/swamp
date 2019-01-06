@@ -1,3 +1,8 @@
+type requireFallback;
+[@bs.val] external requireFallback: string => requireFallback = "require";
+let jsDefaultFallback =
+  requireFallback("/usr/local/etc/swamp/carbon/index.js");
+
 module Config = {
   open DenSeed;
 
@@ -60,9 +65,27 @@ module Config = {
   type export = {. "default": (. unit) => t};
   /* require a file */
   [@bs.val] external require: string => export = "require";
+  external fallbackRequire: requireFallback => export = "%identity";
   let jspath = Path.js;
+  let requireDefault = () =>
+    try (require(jspath)) {
+    | e =>
+      switch (e->Js.Exn.asJsExn) {
+      | None => e |> raise
+      | Some(jserr) =>
+        jserr->Js.Exn.message->Belt.Option.getExn
+        === "Dynamic requires are not currently supported by rollup-plugin-commonjs" ?
+          {
+            /* rollup does not support dynamic require -> use fallback */
+            jsDefaultFallback->fallbackRequire;
+          } :
+          {
+            e |> raise;
+          }
+      }
+    };
+  let default = requireDefault()##default;
   let getJsDefault = () => {
-    let default = require(jspath)##default;
     /* try to access, so that it fails immediately, instead of lazily */
     default(.) |> ignore;
     default;
@@ -70,14 +93,20 @@ module Config = {
   let get = () => {
     let fn =
       try (getJsDefault()) {
-      | Js.Exn.Error(_err) =>
-        Js.log2(
-          Chalk.redBright("Could not open config file. ")
-          ++ Chalk.cyan("Run 'o conf init' to create a default config file."),
-          "Using default config temporarily",
-        );
-        /* Js.log(Js.Exn.stack(err)); */
-        ((.) => make());
+      | e =>
+        switch (e->Js.Exn.asJsExn) {
+        | None => e->raise
+        | Some(_err) =>
+          Js.log2(
+            Chalk.redBright("Could not open config file. ")
+            ++ Chalk.cyan(
+                 "Run 'o conf init' to create a default config file.",
+               ),
+            "Using default config temporarily",
+          );
+          /* Js.log(Js.Exn.stack(err)); */
+          ((.) => make());
+        }
       };
     fn(.);
   };

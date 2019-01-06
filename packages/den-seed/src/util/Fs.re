@@ -116,8 +116,12 @@ let mkdirSync = path => {
   let mkdir = (path): WriteResult.t => {
     let error = ref(None);
     try (_mkdirSync(path)) {
-    | Js.Exn.Error(err) => error := Some(WriteResult.ofJsError(path, err))
-    | _ => error := Some(Error(path, ("Non JS error", None)))
+    | e =>
+      switch (e->Js.Exn.asJsExn) {
+      | None =>
+        error := Some(WriteResult.Error(path, ("Non JS error", None)))
+      | Some(err) => error := Some(WriteResult.ofJsError(path, err))
+      }
     };
     Belt.Option.getWithDefault(error^, Ok(path));
   };
@@ -191,8 +195,11 @@ module FsResult = {
 
 let readSync = path =>
   try (Belt.Result.Ok(Node.Fs.readFileAsUtf8Sync(path))) {
-  | Js.Exn.Error(err) => FsResult.ofJsError(err)
-  | _ => Error(("Non JS error", None))
+  | e =>
+    switch (e->Js.Exn.asJsExn) {
+    | None => Error(("Non JS error", None))
+    | Some(err) => FsResult.ofJsError(err)
+    }
   };
 
 module Json = {
@@ -201,8 +208,11 @@ module Json = {
   let parse =
       (contents): Belt.Result.t(Js.Json.t, (string, option(string))) =>
     try (Ok(Js.Json.parseExn(contents))) {
-    | Js.Exn.Error(err) => Error(Err.make(err))
-    | _ => Error(("Non JS error", None))
+    | e =>
+      switch (e->Js.Exn.asJsExn) {
+      | None => Error(("Non JS error", None))
+      | Some(err) => FsResult.ofJsError(err)
+      }
     };
 
   let read = (path): FsResult.t(Js.Json.t) =>
