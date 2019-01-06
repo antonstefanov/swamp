@@ -1,0 +1,19 @@
+# mac fies
+.DS_Store
+
+# ocaml
+.merlin
+
+# bucklescript
+.bsb.lock
+**/lib/
+
+# npm
+npm-debug.log
+yarn-error.log
+**/node_modules/
+# to allow npm link while ignoring the lock file
+package-lock.json
+
+# keep these
+!.gitkeep

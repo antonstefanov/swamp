@@ -1,7 +1,7 @@
 {
-  "name": "den-carbon-core",
+  "name": "den-packs-core",
   "private": false,
-  "version": "0.0.6",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "build": "bsb -make-world",
@@ -13,14 +13,12 @@
     "bs-platform": "^4.0.17"
   },
   "dependencies": {
-    "den-seed": "^0.0.6",
-    "inquirer": "^6.2.0",
-    "yargs": "^12.0.2"
+    "den-carbon-core": "^0.0.6",
+    "den-seed": "^0.0.6"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/antonstefanov/swamp"
   },
-  "author": "Anton Stefanov",
-  "gitHead": "ebf5e407a9994d30ea9d9b39a0388a95c948bbda"
+  "author": "Anton Stefanov"
 }

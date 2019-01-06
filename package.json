@@ -15,7 +15,7 @@
     "build-all": "yarn run build-seed && yarn run build-carbon-core && yarn run build-carbon && yarn run build-crystal"
   },
   "devDependencies": {
-    "lerna": "^3.8.1"
+    "lerna": "^3.8.4"
   },
   "repository": {
     "type": "git",
