@@ -1,0 +1,14 @@
+@import "styles/brand";
+$input-accent: rgba($brand-primary, 0.8);
+
+.SearchInput {
+  @include outline($input-accent);
+  border-radius: $border-radius-sm;
+  width: 100%;
+  max-width: none;
+  padding: $spacer;
+  border: solid 2px $gray-300;
+  &:focus {
+    border-color: $input-accent;
+  }
+}

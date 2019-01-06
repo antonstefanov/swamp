@@ -1,0 +1,18 @@
+@import "styles/brand";
+
+$footer-border-top: 0;
+$footer-bg: $brand-dark;
+$footer-color: $gray-200;
+$footer-heading-color: darken($footer-color, 30%);
+
+/*==================================================
+                    Footer
+==================================================*/
+
+.Footer {
+  position: relative;
+  background-color: $footer-bg;
+  border-top: $footer-border-top;
+  padding: $spacer * 6;
+  color: $footer-color;
+}

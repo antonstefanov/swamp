@@ -1,0 +1,32 @@
+@import "styles/brand";
+
+$fixed-padding: $spacer * 4;
+$items-container-padding: $fixed-padding;
+$input-accent: $brand-primary;
+
+.CarbonSearch {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.CarbonSearch__input {
+  @include outline($input-accent);
+  border-radius: $border-radius-sm;
+  width: 100%;
+  max-width: none;
+  padding: $spacer;
+  border: solid 2px $gray-300;
+  &:focus {
+    border-color: $input-accent;
+  }
+}
+
+.CarbonSearch__input-container {
+  display: flex;
+  flex: 1;
+}
+
+.CarbonSearch__items {
+  display: flex;
+  flex: 1;
+}

@@ -1,0 +1,29 @@
+@import "styles/brand";
+
+$kbd-accent: $brand-secondary;
+
+$kbd-shadow-size: $spacer * 0.5;
+$kbd-box-shadow: $kbd-shadow-size $kbd-shadow-size 0 0 rgba($kbd-accent, 0.5);
+$nested-kbd-font-weight: 500;
+
+// Code
+$kbd-padding-y: $spacer * 0.5;
+$kbd-padding-x: $spacer;
+$kbd-font-size: 87.5%;
+$kbd-color: $gray-100;
+$kbd-bg: $kbd-accent;
+
+kbd {
+  padding: $kbd-padding-y $kbd-padding-x;
+  color: $kbd-color;
+  background-color: $kbd-bg;
+  border-radius: $border-radius-sm;
+  box-shadow: $kbd-box-shadow;
+
+  kbd {
+    padding: 0;
+    font-size: 100%;
+    font-weight: $nested-kbd-font-weight;
+    box-shadow: $kbd-box-shadow;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "files.associations": {
+    "*.json": "jsonc"
+  },
+  "json.schemas": [
+    {
+      "fileMatch": ["/cmd.jsonc"],
+      "url": "./carbon-core/cmd.schema.json"
+    }
+  ],
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/*.bs.js": true,
+    "**/Index.js": true
+  }
+}

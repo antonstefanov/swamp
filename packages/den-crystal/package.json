@@ -1,0 +1,40 @@
+{
+  "name": "den-crystal",
+  "private": false,
+  "version": "0.0.2",
+  "license": "MIT",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server",
+    "webpack:production": "NODE_ENV=production webpack"
+  },
+  "dependencies": {
+    "bs-fetch": "^0.3.1",
+    "den-seed": "^0.0.2",
+    "fuse.js": "^3.3.0",
+    "marked": "^0.5.2",
+    "normalize.css": "^8.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "reason-react": ">=0.4.0",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "devDependencies": {
+    "@glennsl/bs-jest": "^0.4.5",
+    "bs-platform": "^4.0.14",
+    "css-loader": "^2.0.0",
+    "sass": "^1.15.2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^3.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antonstefanov/swamp"
+  },
+  "author": "Anton Stefanov"
+}

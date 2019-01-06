@@ -1,0 +1,35 @@
+@import 'styles/brand';
+
+.Separator-x {
+  position: relative;
+  border: 0;
+  height: 1px;
+  &:after {
+    content: '';
+    display: block;
+    width: 80%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -40%;
+    height: 1px;
+  }
+}
+.Separator--light {
+  &:after {
+    background: radial-gradient(
+      ellipse at center,
+      rgba($white, 0.6) 0,
+      rgba($black, 0) 95%
+    );
+  }
+}
+.Separator--dark {
+  &:after {
+    background: radial-gradient(
+      ellipse at center,
+      rgba($black, 0.4) 0,
+      rgba($white, 0) 85%
+    );
+  }
+}

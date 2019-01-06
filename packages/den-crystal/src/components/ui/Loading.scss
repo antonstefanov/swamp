@@ -1,0 +1,26 @@
+@import "styles/brand";
+
+.Loading {
+  font-size: 1.2rem;
+  border-radius: $border-radius-sm;
+}
+@keyframes Loading__dots {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-30%);
+  }
+}
+.Loading__dot-1 {
+  display: inline-block;
+  animation: Loading__dots 0.3s alternate infinite;
+}
+.Loading__dot-2 {
+  display: inline-block;
+  animation: Loading__dots 0.3s 0.1s alternate infinite;
+}
+.Loading__dot-3 {
+  display: inline-block;
+  animation: Loading__dots 0.3s 0.2s alternate infinite;
+}

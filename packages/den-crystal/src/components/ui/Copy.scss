@@ -1,0 +1,12 @@
+@import "styles/brand";
+
+.Copy__input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.Copy__input {
+  position: absolute;
+  top: -99999px;
+  left: -99999px;
+}

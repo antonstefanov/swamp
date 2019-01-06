@@ -1,0 +1,105 @@
+@import "styles/brand";
+
+.RevealerContainer {
+  position: relative;
+  border-radius: $border-radius;
+  overflow: hidden;
+  display: flex;
+  flex: 1;
+  pointer-events: none;
+  z-index: 100;
+}
+.RevealerContainer--fullscreen {
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.Revealer {
+  position: absolute;
+  display: flex;
+  top: -50%;
+  bottom: -50%;
+  left: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  transform-origin: center;
+}
+.Revealer__left {
+  flex: 1 0 50%;
+  background-color: $black;
+}
+.Revealer__right {
+  flex: 1 0 50%;
+  background-color: $brand-primary;
+}
+
+@keyframes Revealer-animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(225deg);
+  }
+  100% {
+    transform: rotate(225deg);
+  }
+}
+@keyframes Revealer__left-animate {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes Revealer__right-animate {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes Revealer__logo-animate {
+  0% {
+    transform: scale(0.3);
+  }
+  30% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+.Revealer--animate {
+  animation: Revealer-animate 2s forwards;
+}
+.Revealer__left--animate {
+  animation: Revealer__left-animate 2s forwards;
+}
+.Revealer__right--animate {
+  animation: Revealer__right-animate 2s forwards;
+}
+.RevealerContainer__logo {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+}
+.RevealerContainer__logo--animate {
+  animation: Revealer__logo-animate 2s forwards;
+}

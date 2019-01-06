@@ -1,0 +1,24 @@
+@import "styles/brand";
+
+.Navbar {
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacer;
+}
+
+.Navbar__item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: $spacer * 3;
+  outline: 0;
+  border-radius: $border-radius-sm;
+  &:focus {
+    box-shadow: 0 0 0 $spacer rgba($link-color, 0.5);
+  }
+}

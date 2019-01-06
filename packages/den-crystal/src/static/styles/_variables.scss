@@ -1,0 +1,54 @@
+/*==================================================
+                   Grid
+==================================================*/
+$grid-breakpoints: (
+  xs: 0,
+  usm: 476px,
+  sm: 576px,
+  md: 767px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+$container-max-widths: (
+  usm: 460px,
+  sm: 560px,
+  md: 750px,
+  lg: 960px,
+  xl: 1140px,
+);
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+/*==================================================
+                    Size
+==================================================*/
+$spacer: 4px;
+$spacer-margin: $spacer * 1.5;
+$border-radius: $spacer * 1.5;
+
+/*==================================================
+                   Borders
+==================================================*/
+
+$border-radius: $spacer * 2;
+$border-radius-lg: $spacer * 3;
+$border-radius-sm: $spacer;
+
+/*==================================================
+                    Fonts
+==================================================*/
+
+$bold: 500;
+/*==================================================
+                    Shadows
+==================================================*/
+$shadow-color-base: #000;
+$shadow-position-sm: 0.3rem;
+$shadow-position: 0.4rem;
+$shadow-position-md: 0.5rem;
+$shadow-inset-opacity: 0.7;
+$shadow-out-opacity: 0.175;
+$shadow-inset-color: rgba($shadow-color-base, $shadow-inset-opacity);
+$shadow-color: rgba($shadow-color-base, $shadow-out-opacity);

@@ -1,0 +1,35 @@
+{
+  "name": "den-carbon",
+  "private": false,
+  "version": "0.0.2",
+  "license": "MIT",
+  "bin": {
+    "o": "src/carbon"
+  },
+  "scripts": {
+    "install-carbon-dev": "npm link",
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "roll": "rollup -c && cp './src/main' './dist/main'",
+    "prepublishOnly": "yarn run build && yarn run roll"
+  },
+  "keywords": ["BuckleScript"],
+  "devDependencies": {
+    "bs-platform": "^4.0.14",
+    "rollup": "^1.0.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0"
+  },
+  "dependencies": {
+    "den-carbon-core": "^0.0.2",
+    "den-crystal": "^0.0.2",
+    "den-seed": "^0.0.2",
+    "yargs": "^12.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antonstefanov/swamp"
+  },
+  "author": "Anton Stefanov"
+}

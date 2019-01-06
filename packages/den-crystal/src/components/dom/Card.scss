@@ -1,0 +1,49 @@
+@import "styles/brand";
+
+$card-radius: $border-radius;
+
+.Card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: $card-radius;
+  flex: 1;
+}
+
+.Card__img {
+  width: 100%;
+  border-top-left-radius: $card-radius;
+  border-top-right-radius: $card-radius;
+  background: $brand-dark;
+}
+.Card__img-link {
+  border-top-left-radius: $card-radius;
+  border-top-right-radius: $card-radius;
+  @include outline($link-color);
+  transition: filter 0.15s linear;
+  &:hover {
+    filter: sepia(1) saturate(2);
+  }
+}
+
+.Card__title {
+  margin-bottom: $spacer * 4;
+  user-select: all;
+}
+
+.Card__body {
+  flex: 1 1 auto;
+  padding: $spacer * 4;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.Card__text {
+  display: flex;
+  flex: 1;
+  margin-bottom: $spacer * 2;
+}

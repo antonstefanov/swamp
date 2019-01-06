@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  // change
+  "$id": "https://www.com/swamp/cmd.schema.json",
+  "title": "Command",
+  "description": "A folder containing commands",
+  "type": "object",
+  "properties": {
+    // "title": {
+    //   "description": "The display name of the command",
+    //   "type": "string"
+    // },
+    "description": {
+      "description": "A small summary of the command",
+      "type": "string"
+    },
+    "readme": {
+      "description": "A url or an absolute path to a README.md file. By default the root folder will be searched for a README.md -> provide only if it is in a remote location.",
+      "type": "string"
+    },
+    "tags": {
+      "description": "Tags for the command",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "hooks": {
+      "type": "object",
+      "description": "Hooks for adding and removing packs",
+      "properties": {
+        "add": {
+          "description": "Command to execute to install the pack",
+          "type": "string"
+        },
+        "update": {
+          "description": "Command to execute to update the pack",
+          "type": "string"
+        },
+        "remove": {
+          "description": "Command to execute to uninstall the pack",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["description"],
+  "defaultSnippets": [
+    {
+      "label": "New command",
+      "description": "Create a command config",
+      "body": {
+        // "title": "${1:${TM_DIRECTORY/.*src/$1/}}",
+        "description": "${2:Command description}",
+        "tags": ["${3:web}"]
+      }
+    }
+  ]
+}

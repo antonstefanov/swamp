@@ -1,0 +1,76 @@
+@import "_functions";
+@import "_mixins";
+
+/*----------  Gray  ----------*/
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #eeeeee !default;
+$gray-300: #e4e4e4 !default;
+$gray-400: #dbdbdb !default;
+$gray-500: #bdbdbd !default;
+$gray-600: #949494 !default;
+$gray-700: #535353 !default;
+$gray-800: #3e3f3f !default;
+$gray-900: #282929 !default;
+$black: #2c2c2c;
+
+/*----------  Colors  ----------*/
+
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+
+/*----------  Brand  ----------*/
+
+$brand-primary: #8b40bf;
+$brand-secondary: #007dae;
+
+$brand-info: #63c2de;
+$brand-warning: #f7a336;
+$brand-success: #19ad9c;
+$brand-danger: #dc3545;
+
+$brand-light: $gray-500;
+$brand-dark: #311b3f;
+$brand-accent: #3dafcc;
+$brand-accent-dark: #2b9ebb;
+
+/*----------  Accents  ----------*/
+
+$accents: (
+  indigo: $indigo,
+  purple: $purple,
+  pink: $pink,
+  orange: $orange,
+  yellow: $yellow,
+  teal: $teal,
+  cyan: $cyan,
+  white: $white,
+  accent: $brand-accent,
+  accent-dark: $brand-accent-dark,
+  transparent: transparent,
+);
+
+$theme-colors: (
+  primary: $brand-primary,
+  accent: $brand-accent,
+  secondary: $brand-secondary,
+  success: $brand-success,
+  info: $brand-info,
+  warning: $brand-warning,
+  danger: $brand-danger,
+  light: $brand-light,
+  dark: $brand-dark,
+);
+
+/*----------  Brand Dark  ----------*/
+
+$brand-primary-dark: darken($brand-primary, 7.5%);

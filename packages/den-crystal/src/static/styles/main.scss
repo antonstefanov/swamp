@@ -1,0 +1,47 @@
+@import "brand";
+
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$color: #282929;
+$bg-color: #f9f9f9;
+
+/*==================================================
+                   Colors 
+==================================================*/
+@include bg-variants($theme-colors);
+
+#root {
+  // to prevent flickering before dynamic css is loaded
+  display: block !important;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color;
+  text-align: left;
+  background-color: $bg-color;
+}
+
+a {
+  outline: 0;
+  border-radius: $border-radius-sm;
+  color: $link-color;
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: darken($link-color, 15);
+  }
+  &:focus {
+    box-shadow: 0 0 0 $spacer rgba($link-color, 0.5);
+  }
+}
+
+code {
+  color: darken($orange, 25);
+}
+pre code {
+  color: $gray-900;
+}

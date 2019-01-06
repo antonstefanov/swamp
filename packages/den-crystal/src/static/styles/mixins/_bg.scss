@@ -1,0 +1,47 @@
+@mixin bg-variants($collection) {
+  @each $color, $value in $collection {
+    $contrasted-color: color-contrasted($value);
+    $color-is-light: color-is-light($value);
+    $transparent-bg: $bg-transparency;
+
+    /*----------  Background  ----------*/
+    .Bg--#{$color} {
+      background-color: $value;
+    }
+
+    $contrasted-link-color: darken($contrasted-color, 10%);
+    $contrasted-link-color-hover: darken($contrasted-link-color, 20%);
+    @if ($color-is-light) {
+      $transparent-bg: 0.9;
+      $contrasted-link-color: lighten($contrasted-color, 10%);
+      $contrasted-link-color-hover: lighten($contrasted-link-color, 20%);
+    }
+
+    /*----------  Background  ----------*/
+    .Bg--transparent-#{$color} {
+      background-color: rgba($value, $transparent-bg);
+    }
+    /*----------  Background + Color  ----------*/
+    .Bg--color-transparent-#{$color} {
+      background-color: rgba($value, $transparent-bg);
+      color: $contrasted-color;
+      a {
+        color: $contrasted-link-color;
+        &:hover {
+          color: $contrasted-link-color-hover;
+        }
+      }
+    }
+    .Bg--color-#{$color} {
+      background-color: $value;
+      color: $contrasted-color;
+
+      a {
+        color: $contrasted-link-color;
+        &:hover {
+          color: $contrasted-link-color-hover;
+        }
+      }
+    }
+  }
+}

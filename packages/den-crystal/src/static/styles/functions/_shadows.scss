@@ -1,0 +1,52 @@
+/*==================================================
+                    Outer
+==================================================*/
+@function shadow-out-top(
+  $shadow-opacity: $shadow-out-opacity,
+  $shadow-color: #000,
+  $shadow-position: $shadow-position-sm,
+  $shadow-position-md: $shadow-position
+) {
+  @return 0 (-$shadow-position-md) $shadow-position
+    rgba($shadow-color, $shadow-opacity);
+}
+
+/*==================================================
+                    Inner
+==================================================*/
+
+@function shadow-inset-top(
+  $shadow-opacity: $shadow-inset-opacity,
+  $shadow-color: #000,
+  $shadow-position: $shadow-position,
+  $shadow-position-md: $shadow-position-md
+) {
+  @return inset 0 $shadow-position $shadow-position-md (-$shadow-position-md)
+    rgba($shadow-color, $shadow-opacity);
+}
+@function shadow-inset-right(
+  $shadow-opacity: $shadow-inset-opacity,
+  $shadow-color: #000,
+  $shadow-position: $shadow-position,
+  $shadow-position-md: $shadow-position-md
+) {
+  @return inset -$shadow-position 0 $shadow-position-md (-$shadow-position) rgba($shadow-color, $shadow-opacity);
+}
+@function shadow-inset-bottom(
+  $shadow-opacity: $shadow-inset-opacity,
+  $shadow-color: #000,
+  $shadow-position: $shadow-position,
+  $shadow-position-md: $shadow-position-md
+) {
+  @return inset 0 (-$shadow-position) $shadow-position-md (-$shadow-position)
+    rgba($shadow-color, $shadow-opacity);
+}
+@function shadow-inset-left(
+  $shadow-opacity: $shadow-inset-opacity,
+  $shadow-color: #000,
+  $shadow-position: $shadow-position,
+  $shadow-position-md: $shadow-position-md
+) {
+  @return inset $shadow-position 0 $shadow-position-md (-$shadow-position)
+    rgba($shadow-color, $shadow-opacity);
+}

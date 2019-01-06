@@ -1,0 +1,10 @@
+@import "styles/brand";
+
+.CodeCopy__input {
+  user-select: all;
+  outline: 0;
+  font-family: monospace, monospace;
+  border: 0;
+  background: 0;
+  margin-left: $spacer;
+}

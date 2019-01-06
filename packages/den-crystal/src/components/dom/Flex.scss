@@ -1,0 +1,74 @@
+@import "styles/brand";
+@import "styles/mixins";
+
+/*==================================================
+                    Functions
+==================================================*/
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    576px
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash infront.
+// Useful for making responsive utilities.
+//
+//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    "-"  (Returns a dash)
+//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    "--sm"
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "-", "--#{$name}");
+}
+
+@mixin make-grid-items($infix, $sizes) {
+  @each $size in $sizes {
+    .Flex__Item#{$infix}-i-#{$size} {
+      flex: #{"0 #{100 / $size}%"};
+    }
+  }
+}
+/*==================================================
+                    Mixins
+==================================================*/
+@mixin make-grid-columns(
+  $columns: $grid-columns,
+  $gutter: $grid-gutter-width,
+  $breakpoints: $grid-breakpoints
+) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .Flex#{$infix}-column {
+        flex-direction: column;
+      }
+      .Flex#{$infix}-row {
+        flex-direction: row;
+      }
+      @include make-grid-items($infix, (1, 2, 3, 4, 5));
+    }
+  }
+}
+/*==================================================
+                    CSS
+==================================================*/
+@include make-grid-columns();
+.Flex {
+  flex: 1;
+}
+
+.Flex__Item {
+  display: flex;
+}
+
+.Flex--container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}

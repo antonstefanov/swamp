@@ -1,0 +1,26 @@
+{
+  "name": "den-seed",
+  "private": false,
+  "version": "0.0.2",
+  "license": "MIT",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world"
+  },
+  "devDependencies": {
+    "bs-platform": "^4.0.14"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "tree-kill": "^1.2.1"
+  },
+  "keywords": [
+    "BuckleScript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antonstefanov/swamp"
+  },
+  "author": "Anton Stefanov"
+}

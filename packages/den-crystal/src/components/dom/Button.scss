@@ -1,0 +1,100 @@
+@import "styles/brand";
+
+$btn-padding-x: $spacer * 4;
+$btn-padding-x-sm: $btn-padding-x * 0.5;
+$btn-padding-x-lg: $btn-padding-x * 2;
+
+$btn-padding-y: $spacer * 2;
+$btn-padding-y-sm: $btn-padding-y * 0.5;
+$btn-padding-y-lg: $btn-padding-y * 2;
+$btn-box-shadow: none;
+
+$btn-border-radius: $border-radius;
+$btn-border-radius-lg: $border-radius-lg;
+$btn-border-radius-sm: $border-radius-sm;
+
+$font-size-base: 1rem;
+$font-size-lg: ($font-size-base * 1.25);
+$font-size-sm: ($font-size-base * 0.875);
+
+$btn-line-height: 1.5;
+$btn-line-height-sm: 1.5;
+$btn-line-height-lg: 1.5;
+
+.Button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: 0;
+
+  &:disabled {
+    opacity: 0.9;
+    box-shadow: none;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+
+    &:active {
+      box-shadow: inset 0 3px 5px rgba($black, 0.125);
+    }
+  }
+
+  @include button-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    $font-size-base,
+    1.5,
+    $btn-border-radius
+  );
+
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.Button--iconic {
+  display: inline-flex;
+  padding: $btn-padding-x;
+  &.Button--sm {
+    padding: $btn-padding-x-sm;
+  }
+  &.Button--lg {
+    padding: $btn-padding-x-lg;
+  }
+}
+
+.Button--focus {
+  border-radius: $border-radius;
+  @include outline($link-color);
+}
+
+@each $color, $value in $theme-colors {
+  .Button--solid-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .Button--outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+
+.Button--lg {
+  @include button-size(
+    $btn-padding-y-lg,
+    $btn-padding-x-lg,
+    $font-size-lg,
+    $btn-line-height-lg,
+    $btn-border-radius-lg
+  );
+}
+
+.Button--sm {
+  @include button-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    $font-size-sm,
+    $btn-line-height-sm,
+    $btn-border-radius-sm
+  );
+}

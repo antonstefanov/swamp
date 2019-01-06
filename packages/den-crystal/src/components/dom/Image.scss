@@ -1,0 +1,40 @@
+@import "styles/brand";
+
+.Image {
+  // Make sure <picture> wrapper is set to block
+  // Max-width is governed by parentNode
+  display: block;
+  overflow: hidden;
+
+  // Intrinsic Ratio Box
+  position: relative;
+  height: 0;
+  width: 100%;
+
+  // Default to square
+  padding-top: 100%;
+
+  // Custom Styling
+  background: $white;
+}
+
+// Add as many ratios as you'd like...
+.Image--1x1 {
+  padding-top: 100%;
+}
+
+.Image--4x3 {
+  padding-top: percentage(3 / 4);
+}
+
+.Image--16x9 {
+  padding-top: percentage(9 / 16);
+}
+
+// Force the item to fill the intrinsic box
+.Image__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}

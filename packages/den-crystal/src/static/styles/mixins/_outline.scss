@@ -1,0 +1,18 @@
+@mixin outline-shadow(
+  $outline-color: $link-color,
+  $outline-size: $spacer,
+  $opacity: 0.5
+) {
+  box-shadow: 0 0 0 ($outline-size) rgba($outline-color, $opacity);
+}
+
+@mixin outline(
+  $outline-color: $link-color,
+  $outline-size: $spacer,
+  $opacity: 0.5
+) {
+  outline: 0;
+  &:focus {
+    @include outline-shadow($outline-color, $outline-size, $opacity);
+  }
+}

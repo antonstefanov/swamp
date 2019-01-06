@@ -1,0 +1,136 @@
+@import "styles/brand";
+
+// ==================================================
+//                     Variables
+// ==================================================
+$icon-prefix: "Icon";
+$icon-size-sm: 0.8rem;
+$icon-size-md: 1.5rem;
+$icon-size-lg: 3rem;
+$icon-size-ulg: 5rem;
+$icon-size-xl: 10rem;
+$icon-sizes: (
+  sm: $icon-size-sm,
+  md: $icon-size-md,
+  lg: $icon-size-lg,
+  ulg: $icon-size-ulg,
+  xl: $icon-size-xl,
+);
+$icon-spacer: $spacer/2;
+
+// ==================================================
+//                     Mixins
+// ==================================================
+@mixin icon-size-variant($size, $value) {
+  .#{$icon-prefix}--#{$size} {
+    font-size: $value;
+  }
+}
+
+// ==================================================
+//                     Styles
+// ==================================================
+.#{$icon-prefix} {
+  height: 1em;
+  width: 1em;
+  position: relative;
+  display: inline-flex;
+  align-self: center;
+  fill: currentColor;
+}
+.#{$icon-prefix}--spaced {
+  margin-right: $icon-spacer;
+}
+.#{$icon-prefix}--animate {
+  .#{$icon-prefix}__svg {
+    transition: all 200ms ease-out;
+  }
+}
+
+.#{$icon-prefix}--maximize {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  .#{$icon-prefix}__svg {
+    width: 100%;
+  }
+}
+.#{$icon-prefix}--hover {
+  transition: opacity linear 0.15s;
+  &:hover {
+    opacity: 0.8;
+    transition: opacity 0.05s;
+  }
+}
+.#{$icon-prefix}__svg {
+  height: 100%;
+  margin: auto;
+  stroke-width: 0;
+}
+.#{$icon-prefix}--stroke {
+  .#{$icon-prefix}__svg {
+    stroke-width: 2px;
+    stroke: currentColor;
+  }
+}
+.#{$icon-prefix}--contour {
+  fill: none !important;
+  .#{$icon-prefix}__svg {
+    stroke-width: 2px;
+    stroke: currentColor;
+  }
+  &.#{$icon-prefix}-star {
+    .#{$icon-prefix}__svg {
+      stroke-width: 2rem;
+    }
+  }
+}
+@each $size, $value in $icon-sizes {
+  @include icon-size-variant($size, $value);
+}
+
+.#{$icon-prefix}--transparent {
+  opacity: 0.3;
+}
+
+.#{$icon-prefix}--align {
+  vertical-align: -0.125em;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+.#{$icon-prefix}--a-spin-slow .#{$icon-prefix}__svg {
+  animation: spin 3s infinite linear;
+}
+.#{$icon-prefix}--a-spin-normal .#{$icon-prefix}__svg {
+  animation: spin 1s infinite linear;
+}
+.#{$icon-prefix}--a-spin-fast .#{$icon-prefix}__svg {
+  animation: spin 0.5s infinite linear;
+}
+.#{$icon-prefix}--a-spin-pulse .#{$icon-prefix}__svg {
+  animation: spin 1s infinite steps(8);
+}
+
+.#{$icon-prefix}--rotate-90 .#{$icon-prefix}__svg {
+  transform: rotate(90deg);
+}
+
+.#{$icon-prefix}--rotate-180 .#{$icon-prefix}__svg {
+  transform: rotate(180deg);
+}
+.#{$icon-prefix}--rotate-270 .#{$icon-prefix}__svg {
+  transform: rotate(270deg);
+}
+.#{$icon-prefix}--flip-horizontal .#{$icon-prefix}__svg {
+  transform: scale(-1, 1);
+}
+.#{$icon-prefix}--flip-vertical .#{$icon-prefix}__svg {
+  transform: scale(1, -1);
+}

@@ -1,0 +1,8 @@
+@import "styles/brand";
+
+.CarbonSearchButton {
+  position: fixed;
+  top: $spacer * 2;
+  right: $spacer * 2;
+  z-index: 1;
+}

@@ -1,0 +1,32 @@
+@function soften-color($color, $soften: 90%) {
+  @return scale-color($color, $lightness: $soften);
+}
+
+@function color-is-light($color) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @return $yiq >= 150;
+}
+@function color-contrasted-hover($color) {
+  @if (color-is-light($color)) {
+    @return rgb(34, 34, 34);
+  } @else {
+    @return rgb(226, 226, 226);
+  }
+}
+
+@function color-contrasted($color) {
+  @if (color-is-light($color)) {
+    @return #111;
+  } @else {
+    @return #fff;
+  }
+}
+
+@function grayscale($value) {
+  @return #{'grayscale(#{$value})'};
+}
