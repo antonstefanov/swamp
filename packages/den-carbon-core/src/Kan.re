@@ -55,37 +55,16 @@ module Config = {
     let json = Node.Path.join2(Dir.carbon, "config.json");
     let userJson = Node.Path.join2(Dir.carbon, "user-config.json");
     let js = Node.Path.join2(Dir.carbon, "index.js");
-    let defaultConfigReader = "./den-carbon-core/src/conf/defaultConfigReader.js";
+    let defaultConfigReader =
+      Fs.swampPath("./den-carbon-core/src/conf/defaultConfigReader.js");
   };
 
   type export = {. "default": (. unit) => t};
   /* require a file */
   [@bs.val] external require: string => export = "require";
-  let fallbackGetMerger = require(Path.defaultConfigReader);
   let jspath = Path.js;
-  let requireDefault = () =>
-    try (require(jspath)) {
-    | e =>
-      switch (e->Js.Exn.asJsExn) {
-      | None => e |> raise
-      | Some(jserr) =>
-        jserr->Js.Exn.message->Belt.Option.getExn
-        === "Dynamic requires are not currently supported by rollup-plugin-commonjs" ?
-          {
-            Js.log2(
-              Chalk.yellow("Dynamic requires are not supported yet"),
-              "Using default merger.",
-              /* rollup does not support dynamic require -> use fallback */
-            );
-            fallbackGetMerger;
-          } :
-          {
-            e |> raise;
-          }
-      }
-    };
-  let default = requireDefault()##default;
   let getJsDefault = () => {
+    let default = require(jspath)##default;
     /* try to access, so that it fails immediately, instead of lazily */
     default(.) |> ignore;
     default;

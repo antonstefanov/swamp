@@ -1,7 +1,6 @@
 open Bootstrap;
 
 include Command.Async.Make({
-  open DenSeed;
   open ConfWrite;
 
   [@bs.deriving abstract]
@@ -49,7 +48,7 @@ include Command.Async.Make({
       |> Js.Promise.then_(() =>
            copyConfigAsync(
              ~confirmOverride=!argv->forceGet,
-             ~src=Fs.swampPath(Kan.Config.Path.defaultConfigReader),
+             ~src=Kan.Config.Path.defaultConfigReader,
              ~dest=Kan.Config.Path.js,
              (),
            )
