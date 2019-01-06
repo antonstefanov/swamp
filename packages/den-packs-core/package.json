@@ -21,5 +21,6 @@
     "type": "git",
     "url": "https://github.com/antonstefanov/swamp"
   },
-  "author": "Anton Stefanov"
+  "author": "Anton Stefanov",
+  "gitHead": "c7c5f4f19b769e6384afc57e8d4cadb9d45cb345"
 }
