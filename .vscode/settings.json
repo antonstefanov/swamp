@@ -5,7 +5,7 @@
   "json.schemas": [
     {
       "fileMatch": ["/cmd.jsonc"],
-      "url": "./carbon-core/cmd.schema.json"
+      "url": "./den-carbon-core/cmd.schema.json"
     }
   ],
   "search.exclude": {
