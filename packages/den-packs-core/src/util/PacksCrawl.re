@@ -133,7 +133,7 @@ let updateCrystalData =
          DenSeed.Packs.JsInterop.Output.make(~packs=Array.of_list(configs))
          |> ConfWrite.writeJsonConfig(
               DenSeed.Fs.swampPath(
-                "./carbon/node_modules/den-crystal/src/static/data.json",
+                "./den-carbon/node_modules/den-crystal/src/static/data.json",
               ),
             )
          |> Js.Promise.then_(() =>
