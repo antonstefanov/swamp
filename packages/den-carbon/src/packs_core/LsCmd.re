@@ -8,7 +8,11 @@ include Command.Sync.Make({
   let listPackages = (): unit =>
     switch (ConfRead.User.getPacks()) {
     | Error(err) => Log.error("Could not read config", err)
-    | Ok(packs) => packs |> Log.info("Installed packs")
+    | Ok(packs) =>
+      switch (packs) {
+      | [||] => Log.info("No installed packs", "")
+      | xs => Log.info("Installed packs", xs)
+      }
     };
 
   let handler = _argv => listPackages();

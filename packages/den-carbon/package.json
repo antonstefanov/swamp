@@ -11,17 +11,18 @@
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
-    "roll": "rollup -c && cp './src/main' './dist/main'",
+    "roll": "rollup -c && cp './src/carbon' './dist/carbon'",
+    "pack": "webpack",
     "prepublishOnly": "yarn run build && yarn run roll"
   },
-  "keywords": [
-    "BuckleScript"
-  ],
+  "keywords": ["BuckleScript"],
   "devDependencies": {
     "bs-platform": "^4.0.14",
     "rollup": "^1.0.2",
     "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^4.0.0"
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-ignore": "^1.0.4"
   },
   "dependencies": {
     "den-carbon-core": "^0.0.4",
@@ -34,5 +35,5 @@
     "url": "https://github.com/antonstefanov/swamp"
   },
   "author": "Anton Stefanov",
-  "gitHead": "6ebdb5fee60e608c4056d19a32c4690ffdb0a28f"
+  "gitHead": "ebf5e407a9994d30ea9d9b39a0388a95c948bbda"
 }

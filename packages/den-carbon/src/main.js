@@ -3,11 +3,8 @@ let yargs;
 try {
   yargs = require("yargs");
 } catch (e) {
-  console.log(
-    "Could not load yargs, make sure to run 'yarn' before starting",
-    e,
-  );
-  return;
+  console.log("Could not load yargs, make sure to run 'yarn' before starting");
+  throw e;
 }
 let logo;
 try {
@@ -15,9 +12,8 @@ try {
 } catch (e) {
   console.log(
     "Could not load Logo.bs, make sure to run 'yarn init-all' before running commands",
-    e,
   );
-  return;
+  throw e;
 }
 const {
   includeOnlyCmd,
