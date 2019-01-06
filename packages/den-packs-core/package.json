@@ -1,7 +1,7 @@
 {
   "name": "den-packs-core",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.0.7",
   "license": "MIT",
   "scripts": {
     "build": "bsb -make-world",
@@ -14,8 +14,8 @@
     "bs-platform": "^4.0.17"
   },
   "dependencies": {
-    "den-carbon-core": "^0.0.6",
-    "den-seed": "^0.0.6"
+    "den-carbon-core": "^0.0.7",
+    "den-seed": "^0.0.7"
   },
   "repository": {
     "type": "git",
