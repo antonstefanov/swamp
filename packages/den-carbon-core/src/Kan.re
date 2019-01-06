@@ -1,8 +1,3 @@
-type requireFallback;
-[@bs.val] external requireFallback: string => requireFallback = "require";
-let jsDefaultFallback =
-  requireFallback("/usr/local/etc/swamp/carbon/index.js");
-
 module Config = {
   open DenSeed;
 
@@ -60,12 +55,13 @@ module Config = {
     let json = Node.Path.join2(Dir.carbon, "config.json");
     let userJson = Node.Path.join2(Dir.carbon, "user-config.json");
     let js = Node.Path.join2(Dir.carbon, "index.js");
+    let defaultConfigReader = "./den-carbon-core/src/conf/defaultConfigReader.js";
   };
 
   type export = {. "default": (. unit) => t};
   /* require a file */
   [@bs.val] external require: string => export = "require";
-  external fallbackRequire: requireFallback => export = "%identity";
+  let fallbackGetMerger = require(Path.defaultConfigReader);
   let jspath = Path.js;
   let requireDefault = () =>
     try (require(jspath)) {
@@ -76,8 +72,12 @@ module Config = {
         jserr->Js.Exn.message->Belt.Option.getExn
         === "Dynamic requires are not currently supported by rollup-plugin-commonjs" ?
           {
-            /* rollup does not support dynamic require -> use fallback */
-            jsDefaultFallback->fallbackRequire;
+            Js.log2(
+              Chalk.yellow("Dynamic requires are not supported yet"),
+              "Using default merger.",
+              /* rollup does not support dynamic require -> use fallback */
+            );
+            fallbackGetMerger;
           } :
           {
             e |> raise;

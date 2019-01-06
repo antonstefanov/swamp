@@ -49,7 +49,7 @@ include Command.Async.Make({
       |> Js.Promise.then_(() =>
            copyConfigAsync(
              ~confirmOverride=!argv->forceGet,
-             ~src=Fs.swampPath("./den-carbon/src/defaultConfigReader.js"),
+             ~src=Fs.swampPath(Kan.Config.Path.defaultConfigReader),
              ~dest=Kan.Config.Path.js,
              (),
            )

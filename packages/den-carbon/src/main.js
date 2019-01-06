@@ -19,6 +19,17 @@ try {
   );
   return;
 }
+require("den-packs-core");
+// try {
+//   require("den-packs-core");
+// } catch (e) {
+//   console.log(
+//     "Main command packs could not be loaded, try re-adding carbon or installing its packages",
+//     e,
+//   );
+//   return;
+// }
+const denPacksCorePath = require.resolve("den-packs-core");
 const {
   includeOnlyCmd,
   log,
@@ -38,7 +49,7 @@ const options = {
     log.info(logo, "");
   }
   try {
-    yargs.commandDir("../node_modules/den-packs-core/src", options);
+    yargs.commandDir(pathJoin(denPacksCorePath, "src"), options);
     try {
       config.packs &&
         config.packs.map(path =>
