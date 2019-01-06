@@ -40,7 +40,7 @@ module Config = {
         ~cmdDirs=[||],
         ~showLogo=true,
         ~editor="vi",
-        ~packsPath=DenSeed.Fs.swampPath("./carbon-packs/src/packs"),
+        ~packsPath="/work/carbon-packs/src/packs",
         ~packs=[|"web"|],
         (),
       ) =>

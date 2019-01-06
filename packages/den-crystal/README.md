@@ -6,7 +6,7 @@
 o start
 ```
 
-## Update the displayed packs after making changes to carbon-packs
+## Update the displayed packs after making changes
 
 ```sh
 o refresh
