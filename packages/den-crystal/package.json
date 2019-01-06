@@ -20,6 +20,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "reason-react": ">=0.4.0",
+    "webpack": "^4.0.1",
     "webpack-dev-server": "^3.1.10"
   },
   "devDependencies": {
@@ -29,7 +30,6 @@
     "sass": "^1.15.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.0.1",
     "webpack-cli": "^3.1.1"
   },
   "repository": {

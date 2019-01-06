@@ -11,3 +11,7 @@ o start
 ```sh
 o refresh
 ```
+
+## webpack-dev-server
+
+_temporarily_ use webpack-dev-server for serving
