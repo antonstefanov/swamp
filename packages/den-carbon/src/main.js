@@ -38,7 +38,7 @@ const options = {
     log.info(logo, "");
   }
   try {
-    yargs.commandDir("packs_core", options);
+    yargs.commandDir("./node_modules/den-packs-core/src", options);
     try {
       config.packs &&
         config.packs.map(path =>
