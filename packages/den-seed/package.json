@@ -1,7 +1,7 @@
 {
   "name": "den-seed",
   "private": false,
-  "version": "0.0.15",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "build": "bsb -make-world",
