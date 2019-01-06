@@ -1,7 +1,7 @@
 {
   "name": "den-crystal",
   "private": false,
-  "version": "0.0.12",
+  "version": "0.0.13",
   "license": "MIT",
   "scripts": {
     "build": "bsb -make-world",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "bs-fetch": "^0.3.1",
-    "den-seed": "^0.0.12",
+    "den-seed": "^0.0.13",
     "fuse.js": "^3.3.0",
     "marked": "^0.5.2",
     "normalize.css": "^8.0.1",
