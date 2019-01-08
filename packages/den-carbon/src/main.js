@@ -75,8 +75,7 @@ const options = {
       .demandCommand()
       .completion(AUTOCOMPLETE_ARG)
       .recommendCommands()
-      .help()
-      .alias("help", "h").argv;
+      .help().argv;
   } catch (err) {
     log.error("Unhandled Error", err);
   }
