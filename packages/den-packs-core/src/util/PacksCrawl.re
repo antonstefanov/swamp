@@ -132,9 +132,7 @@ let updateCrystalData =
        | Ok(configs) =>
          DenSeed.Packs.JsInterop.Output.make(~packs=Array.of_list(configs))
          |> ConfWrite.writeJsonConfig(
-              DenSeed.Fs.swampPath(
-                "./den-carbon/node_modules/den-crystal/src/static/data.json",
-              ),
+              DenSeed.Fs.swampPath("./den-crystal/src/static/data.json"),
             )
          |> Js.Promise.then_(() =>
               Belt.Result.Ok(configs) |> Js.Promise.resolve

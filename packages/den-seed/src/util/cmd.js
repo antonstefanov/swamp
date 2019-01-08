@@ -5,6 +5,11 @@ const getLoggedCallback = (logger, level, prepend, fn) => (...args) => {
   logger[level](`${prepend}`, ...args);
   return fn(args);
 };
+const inlineProgress = progress => {
+  process.stderr.clearLine();
+  process.stderr.cursorTo(0);
+  process.stderr.write(progress);
+};
 class ExitError extends Error {
   constructor(code, signal, result, message) {
     super(message);
@@ -22,7 +27,6 @@ class CmdBuffer {
     options = {},
     providedCmdOptions = {},
   ) {
-    this.handleStderr = this.handleStderr.bind(this);
     this.handleError = this.handleError.bind(this);
     this.handleData = this.handleData.bind(this);
     this.handleExit = this.handleExit.bind(this);
@@ -52,7 +56,14 @@ class CmdBuffer {
 
     child.on("error", this.handleError);
     child.on("exit", this.handleExit);
-    child.stderr.on("data", this.handleStderr);
+    // stderr is used a lot for progress updates and etc.
+    // which are not more often than not - not errors
+    child.stderr.on(
+      "data",
+      cmdOptions.stderrAsProgress
+        ? this.handleStderrAsProgress.bind(this)
+        : this.handleStderrAsError.bind(this),
+    );
 
     child.stdout.on(
       "data",
@@ -69,10 +80,11 @@ class CmdBuffer {
     this.result += chunk;
     if (this.options.onOutData) this.options.onOutData(chunk);
   }
-  handleStderr(output) {
-    // stderr is used a lot for progress updates and etc.
-    // which are not more often than not - not errors
-    this.logger.debug("STDERR", output);
+  handleStderrAsProgress(output) {
+    inlineProgress(output);
+  }
+  handleStderrAsError(output) {
+    this.logger.error("STDERR", output);
     this.hasErrors = true;
     this.errors += output;
     if (this.options.onErrorData) {

@@ -8,7 +8,7 @@
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server",
+    "dev": "yarn run webpack-dev-server --progress --inline",
     "webpack:production": "NODE_ENV=production webpack",
     "prepublishOnly": "yarn run build"
   },

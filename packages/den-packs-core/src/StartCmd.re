@@ -15,6 +15,7 @@ include Command.Async.Make({
             ~cwd=DenSeed.Fs.swampPath("./den-crystal"),
             ~shell=true,
             ~forwardOutput=true,
+            ~stderrAsProgress=true,
             (),
           ),
         (),

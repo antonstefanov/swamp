@@ -13,6 +13,9 @@ module CmdOptions = {
     /* If true, the output of the command will be forwarded */
     [@bs.optional]
     forwardOutput: bool,
+    /* If true, the output of stderr will be output inline and not result in errors */
+    [@bs.optional]
+    stderrAsProgress: bool,
     /* Sets the user identity of the process. */
     [@bs.optional]
     uid: int,

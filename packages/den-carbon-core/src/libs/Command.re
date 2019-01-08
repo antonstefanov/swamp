@@ -36,9 +36,11 @@ module ShellProxy = {
     let readCmd: string;
     let runCmd: string;
     let cwd: option(string);
+    let stderrAsProgress: bool;
   };
   module DefaultOptions = {
     let cwd = None;
+    let stderrAsProgress = false;
   };
   let jslogger = DenSeed.Logger.JsLogger.make(Info);
 
@@ -71,6 +73,7 @@ module ShellProxy = {
                 ~cwd=?M.cwd,
                 ~shell=true,
                 ~forwardOutput=true,
+                ~stderrAsProgress=M.stderrAsProgress,
                 (),
               ),
             (),
@@ -82,7 +85,9 @@ module ShellProxy = {
       let handler = _argv => {
         run(
           ~args=
-            DenSeed.Shell.Argv.(make()->args->Belt.Option.getWithDefault([||])),
+            DenSeed.Shell.Argv.(
+              make()->args->Belt.Option.getWithDefault([||])
+            ),
         );
       };
     });

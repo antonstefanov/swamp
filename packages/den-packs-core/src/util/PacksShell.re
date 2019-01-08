@@ -5,7 +5,9 @@ module Result = {
   let ofShellResult = (resultPromise: Js.Promise.t(DenSeed.Shell.Result.t)) =>
     resultPromise
     |> Js.Promise.then_(result =>
-         result |> DenSeed.Shell.Result.toStringAsyncResult |> Js.Promise.resolve
+         result
+         |> DenSeed.Shell.Result.toStringAsyncResult
+         |> Js.Promise.resolve
        );
 };
 
@@ -13,7 +15,14 @@ let run = (~cwd: string, cmd: string) =>
   Cmd.(
     runAsync(
       ~cmd,
-      ~cmdOptions=CmdOptions.make(~shell=true, ~cwd, ~forwardOutput=true, ()),
+      ~cmdOptions=
+        CmdOptions.make(
+          ~shell=true,
+          ~cwd,
+          ~forwardOutput=true,
+          ~stderrAsProgress=true,
+          (),
+        ),
       (),
     )
   )
