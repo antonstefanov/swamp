@@ -54,6 +54,7 @@ module WriteResult = {
   type t =
     | Ok(string)
     | AlreadyExists(string)
+    | ErrorDoesNotExist(string, (string, option(string)))
     | ErrorNoRights(string, (string, option(string)))
     | Error(string, (string, option(string)));
 
@@ -62,12 +63,15 @@ module WriteResult = {
     | Ok(_)
     | AlreadyExists(_) => true
     | Error(_)
+    | ErrorDoesNotExist(_)
     | ErrorNoRights(_) => false;
 
   let ofJsError = (path: string, err): t =>
     switch (Err.code(err)) {
     | Some(code) when code === "EEXIST" => AlreadyExists(path)
     | Some(code) when code === "ENOENT" =>
+      ErrorDoesNotExist(path, Err.make(err))
+    | Some(code) when code === "EACCES" =>
       ErrorNoRights(path, Err.make(err))
     | Some(code) =>
       Error(path, Err.make(~default={j|"$code : Unknown error"|j}, err))
@@ -134,6 +138,7 @@ let mkdirSync = path => {
       | Ok(_)
       | AlreadyExists(_) => aux(xs)
       | ErrorNoRights(path, err)
+      | ErrorDoesNotExist(path, err)
       | Error(path, err) => Error(path, err)
       }
     };

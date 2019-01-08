@@ -20,6 +20,7 @@ include Command.Async.Make({
       (pack: string): Js.Promise.t(Belt.Result.t(string, DenSeed.Err.t)) => {
     switch (ConfWrite.ensureDirExists(Node.Path.join2(packsPath, pack))) {
     | ErrorNoRights(_path, err)
+    | ErrorDoesNotExist(_path, err)
     | Error(_path, err) => Belt.Result.Error(err) |> Js.Promise.resolve
     | AlreadyExists(packPath)
     | Ok(packPath) =>

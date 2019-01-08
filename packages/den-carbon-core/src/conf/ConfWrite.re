@@ -14,6 +14,8 @@ let ensureDirsExist = dirs => {
 let traceDirResult = (result: Fs.WriteResult.t) => {
   switch (result) {
   | Error(path, err) => Bootstrap.Log.error({j|"Err ($path)"|j}, err)
+  | ErrorDoesNotExist(_path, err) =>
+    Bootstrap.Log.error("Dir does not exist", err)
   | ErrorNoRights(_path, err) => Bootstrap.Log.error("No rights", err)
   | Ok(path) => Bootstrap.Log.info("Ok", path)
   | AlreadyExists(path) => Bootstrap.Log.debug("Already exists", path)
@@ -54,6 +56,8 @@ let fileExistsConfirm = (~confirm, ~cancel, filePath) =>
 let traceResult = (result: Fs.WriteResult.t) => {
   switch (result) {
   | Error(_path, err) => Bootstrap.Log.error("Err", err)
+  | ErrorDoesNotExist(_path, err) =>
+    Bootstrap.Log.error("Dir does not exist", err)
   | ErrorNoRights(_path, err) => Bootstrap.Log.error("No rights", err)
   | Ok(path) => Bootstrap.Log.info("Wrote", path)
   | AlreadyExists(path) =>
