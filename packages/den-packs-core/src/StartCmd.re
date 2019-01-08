@@ -12,8 +12,7 @@ include Command.Async.Make({
         ~cmd,
         ~cmdOptions=
           CmdOptions.make(
-            ~cwd=
-              DenSeed.Fs.swampPath("./den-carbon/node_modules/den-crystal"),
+            ~cwd=DenSeed.Fs.swampPath("./den-crystal"),
             ~shell=true,
             ~forwardOutput=true,
             (),
