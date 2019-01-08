@@ -34,9 +34,10 @@ class CmdBuffer {
       : providedArgs;
 
     const child = spawn(cmd, args, cmdOptions);
+    this.child = child;
 
     logger.info(
-      `CMD ${child.pid} -->`,
+      `CMD ${this.pid} -->`,
       `${cmd} ${providedArgs.join(" ")}`,
       cmdOptions,
     );
@@ -63,15 +64,15 @@ class CmdBuffer {
         getLoggedCallback(logger, "debug", "MESSAGE", options.onMessage),
       );
     }
-
-    this.child = child;
   }
   handleData(chunk) {
     this.result += chunk;
     if (this.options.onOutData) this.options.onOutData(chunk);
   }
   handleStderr(output) {
-    this.logger.error("STDERR", output);
+    // stderr is used a lot for progress updates and etc.
+    // which are not more often than not - not errors
+    this.logger.debug("STDERR", output);
     this.hasErrors = true;
     this.errors += output;
     if (this.options.onErrorData) {
@@ -116,6 +117,10 @@ class CmdBuffer {
   kill(signal = undefined) {
     const pid = this.pid;
     this.child.stdin.destroy();
+    if (!this.child.pid) {
+      this.logger.error("Invalid pid, cannot kill process");
+      return;
+    }
     try {
       kill(pid, signal);
     } catch (err) {
@@ -123,7 +128,7 @@ class CmdBuffer {
     }
   }
   get pid() {
-    return this.child.pid;
+    return this.child.pid || "unknown pid";
   }
 }
 
@@ -139,28 +144,23 @@ const runAsync = (
   },
   cmdOptions = {},
 ) =>
-  Promise.race([
-    new Promise((_resolve, reject) =>
-      setTimeout(reject, timeout, new Error("Command timed out")),
-    ),
-    new Promise((resolve, reject) => {
-      try {
-        new CmdBuffer(
-          cmd,
-          args,
-          logger,
-          {
-            ...options,
-            onCompleted: resolve,
-            onError: reject,
-          },
-          cmdOptions,
-        );
-      } catch (e) {
-        reject(e);
-      }
-    }),
-  ]);
+  new Promise((resolve, reject) => {
+    try {
+      new CmdBuffer(
+        cmd,
+        args,
+        logger,
+        {
+          ...options,
+          onCompleted: resolve,
+          onError: reject,
+        },
+        cmdOptions,
+      );
+    } catch (e) {
+      reject(e);
+    }
+  });
 
 module.exports = {
   runAsync,
