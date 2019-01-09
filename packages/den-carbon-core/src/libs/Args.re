@@ -371,6 +371,11 @@ let interactiveArg = (~default, yargs) =>
 
 let help = yargs => yargs->help->alias("help", "h");
 
+let transform_completion = (fn, current, argv) =>
+  fn(current, argv) |> Array.of_list;
+let completion = (fn: (string, 'a) => list(string), yargs: t) =>
+  Yargs.completion(yargs, "completion", transform_completion(fn));
+
 let dirOptions = dirOptions;
 /* cannot call it from a fn, because dir is relative to caller path */
 [@bs.send]

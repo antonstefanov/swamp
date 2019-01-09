@@ -76,6 +76,10 @@ type jsArg('a, 'b) = {
 };
 [@bs.send] external cmdOption: (t, string, jsArg('a, 'b)) => t = "option";
 
+[@bs.send]
+external completion: (t, string, (string, 'a) => array(string)) => t =
+  "completion";
+
 let cmdArg =
     (
       ~alias=?,
