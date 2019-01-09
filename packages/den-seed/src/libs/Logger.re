@@ -13,7 +13,7 @@ module type T = {
 
 module ConsoleLogger: T = {
   /* tuples are arrays -> expand them as args */
-  let consoleLog: ('a, 'b) => unit = [%raw
+  let log: ('a, 'b) => unit = [%raw
     (message, value) => {|
       if(Array.isArray(value)){
         console.log(message, ...value);
@@ -22,23 +22,33 @@ module ConsoleLogger: T = {
       }
     |}
   ];
+  /* using stderr for anything not related to the actual out */
+  let err: ('a, 'b) => unit = [%raw
+    (message, value) => {|
+      if(Array.isArray(value)){
+        console.error(message, ...value);
+      } else {
+        console.error(message, value);
+      }
+    |}
+  ];
 
   let generic = (message, value) =>
-    consoleLog(Obj.magic(message), Obj.magic(value));
+    log(Obj.magic(message), Obj.magic(value));
   let debug = (message, value) =>
-    white(message)->Obj.magic->consoleLog(value->Obj.magic);
+    white(message)->Obj.magic->err(value->Obj.magic);
   let trace = (message, value) => {
-    debug(message->Obj.magic, value->Obj.magic);
+    debug(message->Obj.magic, err->Obj.magic);
     value;
   };
   let info = (message, value) =>
-    blue(message)->Obj.magic->consoleLog(value->Obj.magic);
+    blue(message)->Obj.magic->log(value->Obj.magic);
   let warn = (message, value) =>
-    yellow(message)->Obj.magic->consoleLog(value->Obj.magic);
+    yellow(message)->Obj.magic->err(value->Obj.magic);
   let success = (message, value) =>
-    cyan(message)->Obj.magic->consoleLog(value->Obj.magic);
+    cyan(message)->Obj.magic->log(value->Obj.magic);
   let error = (message, value) =>
-    red(message)->Obj.magic->consoleLog(value->Obj.magic);
+    red(message)->Obj.magic->err(value->Obj.magic);
 };
 
 let noop = (_message, _value) => ();
