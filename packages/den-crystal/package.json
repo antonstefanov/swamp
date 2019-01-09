@@ -3,6 +3,7 @@
   "private": false,
   "version": "0.1.4",
   "license": "MIT",
+  "main": "./src/fake-main.js",
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
