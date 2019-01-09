@@ -11,7 +11,8 @@
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
-    "prepublishOnly": "yarn run build"
+    "prepublishOnly": "yarn run build",
+    "start-crystal": "cd ./node_modules/den-crystal && node ../.bin/webpack-dev-server"
   },
   "keywords": [],
   "devDependencies": {

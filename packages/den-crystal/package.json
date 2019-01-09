@@ -23,15 +23,15 @@
     "reason-react": ">=0.4.0",
     "webpack": "^4.0.1",
     "webpack-dev-server": "^3.1.10",
-    "webpack-cli": "^3.1.1"
-  },
-  "devDependencies": {
-    "@glennsl/bs-jest": "^0.4.5",
-    "bs-platform": "^4.0.17",
+    "webpack-cli": "^3.1.1",
     "css-loader": "^2.0.0",
     "sass": "^1.15.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1"
+  },
+  "devDependencies": {
+    "@glennsl/bs-jest": "^0.4.5",
+    "bs-platform": "^4.0.17"
   },
   "repository": {
     "type": "git",
