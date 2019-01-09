@@ -3,7 +3,7 @@ let yargs;
 try {
   yargs = require("yargs");
 } catch (e) {
-  console.log(
+  console.error(
     "Could not load yargs, make sure to run 'yarn' before starting",
     e,
   );
@@ -13,7 +13,7 @@ let logo;
 try {
   logo = require("./JsImport.bs").logo;
 } catch (e) {
-  console.log(
+  console.error(
     "Could not load Logo.bs, make sure to run 'yarn init-all' before running commands",
     e,
   );
@@ -22,7 +22,7 @@ try {
 // try {
 //   require("den-packs-core");
 // } catch (e) {
-//   console.log(
+//   console.error(
 //     "Main command packs could not be loaded, try re-adding carbon or installing its packages",
 //     e,
 //   );
@@ -56,9 +56,10 @@ const options = {
         );
     } catch (err) {
       if (err.code === "ENOENT") {
-        log.warn("Packages dir does not exist", err.message);
+        // info so that it doesn't pollute auto-completion which reads from stderr (TODO: investigate why)
+        log.info("Packages dir does not exist", err.message);
       } else {
-        log.error("Error during packs parsing", err);
+        log.info("Error during packs parsing", err);
       }
     }
     try {
@@ -66,7 +67,8 @@ const options = {
         config.cmdDirs.map(path => yargs.commandDir(path, options));
     } catch (err) {
       if (err.code === "ENOENT") {
-        log.warn("Commands dir does not exist", err.message);
+        // info so that it doesn't pollute auto-completion which reads from stderr (TODO: investigate why)
+        log.info("Commands dir does not exist", err.message);
       } else {
         log.error("Error during user commands parsing", err);
       }

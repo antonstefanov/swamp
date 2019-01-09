@@ -15,7 +15,7 @@ let autocomplete = (output: output) => {
     runAsync(
       ~cmd="o",
       ~args,
-      ~cmdOptions=CmdOptions.make(~shell=true, ()),
+      ~cmdOptions=CmdOptions.make(~shell=true, ~stderrAsProgress=true, ()),
       (),
     )
   );
