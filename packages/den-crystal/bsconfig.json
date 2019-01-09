@@ -19,11 +19,6 @@
   ],
   "suffix": ".bs.js",
   "namespace": true,
-  "bs-dependencies": [
-    "reason-react",
-    "bs-fetch",
-    "den-seed",
-    "@glennsl/bs-jest"
-  ],
+  "bs-dependencies": ["reason-react", "den-seed", "@glennsl/bs-jest"],
   "refmt": 3
 }

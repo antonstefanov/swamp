@@ -15,8 +15,9 @@ let promiseMap = (fn, result) =>
   | Belt.Result.Error(err) => Belt.Result.Error(err) |> Js.Promise.resolve
   };
 
-let fetch = path => Fetch.fetch(path) |> result_of_response;
+let fetch = path => DenSeed.Fetch.fetch(path) |> result_of_response;
 
 module Response = {
-  let text = input => Fetch.Response.text(input) |> result_of_response;
+  let text = input =>
+    DenSeed.Fetch.Response.text(input) |> result_of_response;
 };

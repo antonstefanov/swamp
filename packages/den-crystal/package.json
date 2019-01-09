@@ -13,7 +13,6 @@
     "prepublishOnly": "yarn run build"
   },
   "dependencies": {
-    "bs-fetch": "^0.3.1",
     "den-seed": "^0.1.2",
     "fuse.js": "^3.3.0",
     "marked": "^0.5.2",
