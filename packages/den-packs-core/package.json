@@ -7,7 +7,8 @@
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
-    "prepublishOnly": "yarn run build"
+    "prepublishOnly": "yarn run build",
+    "start-crystal": "cd ../den-crystal && node ../.bin/webpack-dev-server"
   },
   "keywords": [],
   "devDependencies": {
@@ -15,7 +16,8 @@
   },
   "dependencies": {
     "den-carbon-core": "^0.1.4",
-    "den-seed": "^0.1.4"
+    "den-seed": "^0.1.4",
+    "den-crystal": "^0.1.7"
   },
   "repository": {
     "type": "git",

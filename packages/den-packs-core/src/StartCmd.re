@@ -21,9 +21,28 @@ include Command.Async.Make({
         (),
       )
     );
+
+  let dirname: string = Belt.Option.getWithDefault([%bs.node __dirname], ".");
+
+  let runLocalCmd = cmd =>
+    Cmd.(
+      runAsync(
+        ~cmd,
+        ~cmdOptions=
+          CmdOptions.make(
+            ~cwd=dirname,
+            ~shell=true,
+            ~forwardOutput=true,
+            ~stderrAsProgress=true,
+            (),
+          ),
+        (),
+      )
+    );
+
   let buildCrystal = () => runCrystalCmd("yarn run build");
 
-  let startCrystalWebpack = () => runCrystalCmd("yarn run dev");
+  let startCrystalWebpack = () => runLocalCmd("yarn run start-crystal");
 
   let start = (~watch): Js.Promise.t(unit) =>
     PacksCrawl.updateCrystalData(~watch)
