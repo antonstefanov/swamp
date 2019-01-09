@@ -1,7 +1,7 @@
 {
   "name": "den-crystal",
   "private": false,
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": "MIT",
   "main": "./src/fake-main.js",
   "scripts": {
@@ -14,6 +14,7 @@
     "prepublishOnly": "yarn run build"
   },
   "dependencies": {
+    "css-loader": "^2.0.0",
     "den-seed": "^0.1.4",
     "fuse.js": "^3.3.0",
     "marked": "^0.5.2",
@@ -21,13 +22,12 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "reason-react": ">=0.4.0",
-    "webpack": "^4.0.1",
-    "webpack-dev-server": "^3.1.10",
-    "webpack-cli": "^3.1.1",
-    "css-loader": "^2.0.0",
     "sass": "^1.15.2",
     "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.10"
   },
   "devDependencies": {
     "@glennsl/bs-jest": "^0.4.5",
