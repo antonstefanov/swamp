@@ -9,7 +9,7 @@
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "yarn run webpack-dev-server --progress --inline",
+    "dev": "webpack-dev-server --progress --inline",
     "webpack:production": "NODE_ENV=production webpack",
     "prepublishOnly": "yarn run build"
   },
@@ -22,7 +22,8 @@
     "react-dom": "^16.2.0",
     "reason-react": ">=0.4.0",
     "webpack": "^4.0.1",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "webpack-cli": "^3.1.1"
   },
   "devDependencies": {
     "@glennsl/bs-jest": "^0.4.5",
@@ -30,8 +31,7 @@
     "css-loader": "^2.0.0",
     "sass": "^1.15.2",
     "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "webpack-cli": "^3.1.1"
+    "style-loader": "^0.23.1"
   },
   "repository": {
     "type": "git",
