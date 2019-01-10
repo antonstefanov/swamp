@@ -28,6 +28,10 @@
     {
       "source": "/static/:r1/:r2/:r3/:r4/:r5",
       "destination": "/:r1/:r2/:r3/:r4/:r5"
+    },
+    {
+      "source": "**",
+      "destination": "/index.html"
     }
   ],
   "directoryListing": true
