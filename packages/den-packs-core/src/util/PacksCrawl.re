@@ -2,7 +2,7 @@ open DenSeed;
 open Bootstrap;
 
 type filesResult = Fs.FsResult.t(list(Fs.FileResult.t));
-// get the actual config merged with the user config
+/*  get the actual config merged with the user config */
 let packsPath = Kan.Config.get()->Kan.Config.packsPathGet;
 
 [@bs.val]
@@ -24,7 +24,11 @@ type cmdConfig = Belt.Result.t(DenSeed.Packs.Json.t, DenSeed.Err.t);
 let getCmdConfig = (path, folderName): Js.Promise.t(cmdConfig) => {
   let cmdDir = Node.Path.join2(path, folderName);
   let defaultReadmePath = Node.Path.join2(cmdDir, "README.md");
+  let defaultReadmePathOutput =
+    "/static/packs" ++ defaultReadmePath |> Js.String.replace(path, "");
   let imagesDir = Node.Path.join2(cmdDir, "images");
+  let imagesDirOutput =
+    "/static/packs" ++ imagesDir |> Js.String.replace(path, "");
   let configPath = Node.Path.join2(cmdDir, "cmd.jsonc");
 
   let validReadme = readme =>
@@ -36,7 +40,7 @@ let getCmdConfig = (path, folderName): Js.Promise.t(cmdConfig) => {
           "Mandatory README file does not exist.",
           Some(defaultReadmePath),
         ))
-      | true => Belt.Result.Ok(defaultReadmePath)
+      | true => Belt.Result.Ok(defaultReadmePathOutput)
       }
     | Some(url) => Belt.Result.Ok(url) /* won't check urls */
     };
@@ -93,7 +97,7 @@ let getCmdConfig = (path, folderName): Js.Promise.t(cmdConfig) => {
              Log.warn(folderName ++ ": could not get any images.", err);
              [];
            | Ok(images) =>
-             images |> List.map(i => Node.Path.join2(imagesDir, i))
+             images |> List.map(i => Node.Path.join2(imagesDirOutput, i))
            }
          )
          |> getConfig(stats)
@@ -130,13 +134,22 @@ let updateCrystalData =
        switch (result) {
        | Error(err) => Belt.Result.Error(err) |> Js.Promise.resolve
        | Ok(configs) =>
-         DenSeed.Packs.JsInterop.Output.make(~packs=Array.of_list(configs))
-         |> ConfWrite.writeJsonConfig(
-              DenSeed.Fs.swampPath("./den-crystal/src/static/data.json"),
-            )
-         |> Js.Promise.then_(() =>
-              Belt.Result.Ok(configs) |> Js.Promise.resolve
-            )
+         switch (
+           DenSeed.Fs.swampPath("./den-crystal/dist/")
+           ->ConfWrite.ensureDirExists
+         ) {
+         /* DenSeed.Fs.swampPath("./den-crystal/src/static/data.json"), */
+         | ErrorNoRights(_path, err)
+         | ErrorDoesNotExist(_path, err)
+         | Error(_path, err) => Belt.Result.Error(err) |> Js.Promise.resolve
+         | AlreadyExists(dist)
+         | Ok(dist) =>
+           DenSeed.Packs.JsInterop.Output.make(~packs=Array.of_list(configs))
+           |> ConfWrite.writeJsonConfig(Node.Path.join2(dist, "data.json"))
+           |> Js.Promise.then_(() =>
+                Belt.Result.Ok(configs) |> Js.Promise.resolve
+              )
+         }
        }
      );
 

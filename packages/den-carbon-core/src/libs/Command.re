@@ -47,7 +47,10 @@ module ShellProxy = {
   module Make = (M: Options) =>
     AsyncWithResult.Make({
       [@bs.deriving abstract]
-      type t;
+      type t = {
+        [@bs.as "_"]
+        currentArgs: array(string),
+      };
 
       let command = M.readCmd ++ " [args..]";
       let description = M.description;
@@ -82,11 +85,13 @@ module ShellProxy = {
 
       /* the actual command will be ignored and all args will be
          taken raw from the process and propagated */
-      let handler = _argv => {
+      let handler = argv => {
         run(
           ~args=
             DenSeed.Shell.Argv.(
-              make()->args->Belt.Option.getWithDefault([||])
+              make()
+              ->args(~sysArgs=argv->currentArgsGet->Array.length, ())
+              ->Belt.Option.getWithDefault([||])
             ),
         );
       };

@@ -1,27 +1,25 @@
 {
-  "name": "den-packs-core",
+  "name": "den-crystal-server",
+  "version": "0.1.7",
   "private": false,
-  "version": "0.1.8",
   "license": "MIT",
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
-    "prepublishOnly": "yarn run build"
+    "serve": "serve"
   },
   "keywords": [],
   "devDependencies": {
     "bs-platform": "^4.0.17"
   },
   "dependencies": {
-    "den-carbon-core": "^0.1.4",
-    "den-crystal-server": "^0.1.7",
-    "den-seed": "^0.1.4"
+    "den-crystal": "^0.1.7",
+    "serve": "^10.1.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/antonstefanov/swamp"
   },
-  "author": "Anton Stefanov",
-  "gitHead": "c53ed6563c27ed977c10f4b5ac2abdffedfe8bf6"
+  "author": "Anton Stefanov"
 }

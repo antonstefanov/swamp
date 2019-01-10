@@ -11,12 +11,12 @@ module.exports = {
     publicPath: "/build/",
   },
   devServer: {
-    contentBase: [
-      path.resolve(__dirname, "./src/static"),
-      // let's ignore what can go wrong by serving root as base
-      "/",
-    ],
+    contentBase: [path.resolve(__dirname, "./src/static")],
     historyApiFallback: true,
+    stats: {
+      modules: false,
+      entries: false,
+    },
   },
   resolve: {
     alias: {
