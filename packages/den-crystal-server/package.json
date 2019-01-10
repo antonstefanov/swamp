@@ -7,7 +7,7 @@
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
-    "serve": "serve"
+    "serve": "node src/serve.js"
   },
   "keywords": [],
   "devDependencies": {
