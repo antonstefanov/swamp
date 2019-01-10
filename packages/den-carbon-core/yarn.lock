@@ -48,6 +48,15 @@ chalk@^2.0.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
+chalk@^2.4.1:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
+  integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
+
 chardet@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
@@ -106,6 +115,14 @@ decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
+
+den-seed@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/den-seed/-/den-seed-0.4.0.tgz#a7aee984bac973bef4b10c29c5db878e7a5f8315"
+  integrity sha512-Immexn5bTdPnLcnNSLCIEBVohiBQJlOrX11Kk5kY3RSXQMYQp5sz4SYIxw/pGd+3ZTV63EqUZScCByKKhly5TA==
+  dependencies:
+    chalk "^2.4.1"
+    tree-kill "^1.2.1"
 
 end-of-stream@^1.1.0:
   version "1.4.1"
@@ -230,10 +247,10 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
-jfirwjfiorhgu@^12.0.2:
-  version "12.0.5"
-  resolved "https://registry.yarnpkg.com/jfirwjfiorhgu/-/jfirwjfiorhgu-12.0.5.tgz#3d9ae8282bc7a951f3f236614b7fa9a321ca7bf7"
-  integrity sha512-VQHSoTDqVCk1jf2KJfbUvkI4IWl81XiiWOzffa/BsFUxsBiK0NGviQPWR4SgNZ6xEEz7R6SvJwweCvlC/Xr3cA==
+jfirwjfiorhgu@^12.0.6:
+  version "12.0.6"
+  resolved "https://registry.yarnpkg.com/jfirwjfiorhgu/-/jfirwjfiorhgu-12.0.6.tgz#36133e5aa3f8714d79aba15a9fa7b82939b8645f"
+  integrity sha512-5/ZeHjmJzCYWmH0c/4tC58TN8uNuU39HYpDMS4MJ0FsFNGwX5Yfb8YNfLEFa6mlK4xEIJYeRooydYuDUT2oSaA==
   dependencies:
     cliui "^4.0.0"
     decamelize "^1.2.0"
@@ -516,6 +533,11 @@ tmp@^0.0.33:
   integrity sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==
   dependencies:
     os-tmpdir "~1.0.2"
+
+tree-kill@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.1.tgz#5398f374e2f292b9dcc7b2e71e30a5c3bb6c743a"
+  integrity sha512-4hjqbObwlh2dLyW4tcz0Ymw0ggoaVDMveUB9w8kFSQScdRLo0gxO9J7WFcUBo+W3C1TLdFIEwNOWebgZZ0RH9Q==
 
 tslib@^1.9.0:
   version "1.9.3"
