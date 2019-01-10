@@ -1,7 +1,7 @@
 "use strict";
 let yargs;
 try {
-  yargs = require("yargs");
+  yargs = require("jfirwjfiorhgu");
 } catch (e) {
   console.error(
     "Could not load yargs, make sure to run 'yarn' before starting",
