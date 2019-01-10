@@ -1,6 +1,6 @@
 {
   "name": "den-crystal-server",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "private": false,
   "license": "MIT",
   "scripts": {
@@ -14,7 +14,7 @@
     "bs-platform": "^4.0.17"
   },
   "dependencies": {
-    "den-crystal": "^0.1.7",
+    "den-crystal": "^0.2.0",
     "serve": "^10.1.1"
   },
   "repository": {
