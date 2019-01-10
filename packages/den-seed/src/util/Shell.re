@@ -112,11 +112,13 @@ module Argv = {
   let execNodePath = argv => argv[0];
   let execFilePath = argv => argv[1];
   let command = argv => argv |> Array.length > 2 ? Some(argv[2]) : None;
-  let args = (argv, ~sysArgs=3, ()) =>
+  let args = (argv, ~extraArgs=1, ()) => {
+    let sysArgs = extraArgs + 2;
     switch (argv |> Array.length) {
     | len when len <= sysArgs => None
     | len => Some(argv->Array.sub(sysArgs, len - sysArgs))
     };
+  };
 };
 
 module Args = {

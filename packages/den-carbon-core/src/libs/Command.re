@@ -90,7 +90,7 @@ module ShellProxy = {
           ~args=
             DenSeed.Shell.Argv.(
               make()
-              ->args(~sysArgs=argv->currentArgsGet->Array.length, ())
+              ->args(~extraArgs=argv->currentArgsGet->Array.length, ())
               ->Belt.Option.getWithDefault([||])
             ),
         );
