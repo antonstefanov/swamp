@@ -58,7 +58,10 @@ include Command.Async.Make({
     Cmd.(
       runAsync(
         ~cmd="ln -sfn",
-        ~args=[packsPath, DenSeed.Fs.swampPath("./den-crystal/dist/")],
+        ~args=[
+          packsPath,
+          DenSeed.Fs.swampPath("./den-crystal/dist/static/"),
+        ],
         ~cmdOptions=
           CmdOptions.make(
             ~cwd=dirname,

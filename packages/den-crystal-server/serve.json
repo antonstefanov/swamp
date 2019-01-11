@@ -2,37 +2,8 @@
   "public": "../den-crystal/dist",
   "rewrites": [
     {
-      "source": "will move to a better static server in next v",
-      "destination": "/"
-    },
-    {
-      "source": "/static",
-      "destination": "/"
-    },
-    {
-      "source": "/static/:r1",
-      "destination": "/:r1"
-    },
-    {
-      "source": "/static/:r1/:r2",
-      "destination": "/:r1/:r2"
-    },
-    {
-      "source": "/static/:r1/:r2/:r3",
-      "destination": "/:r1/:r2/:r3"
-    },
-    {
-      "source": "/static/:r1/:r2/:r3/:r4",
-      "destination": "/:r1/:r2/:r3/:r4"
-    },
-    {
-      "source": "/static/:r1/:r2/:r3/:r4/:r5",
-      "destination": "/:r1/:r2/:r3/:r4/:r5"
-    },
-    {
       "source": "**",
       "destination": "/index.html"
     }
-  ],
-  "directoryListing": true
+  ]
 }

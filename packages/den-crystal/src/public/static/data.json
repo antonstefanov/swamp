@@ -1,0 +1,101 @@
+{
+  "packs": [
+    {
+      "title": "ask",
+      "description": "Ask a question and receive a random answer",
+      "tags": [
+        "random"
+      ],
+      "images": [
+        "/static/packs/ask/images/woodtype.jpg"
+      ],
+      "readme": "/static/packs/ask/README.md",
+      "created": 1545211845857.0085,
+      "modified": 1546808149867.718
+    },
+    {
+      "title": "files",
+      "description": "File utilities, only a placeholder",
+      "tags": [
+        "fs"
+      ],
+      "images": [
+        "/static/packs/files/images/files.jpg"
+      ],
+      "readme": "/static/packs/files/README.md",
+      "created": 1544847544015.1194,
+      "modified": 1546066750487.0857
+    },
+    {
+      "title": "git-train",
+      "description": "Manage your PR chain with ease",
+      "tags": [
+        "git",
+        "pr"
+      ],
+      "images": [
+        "/static/packs/git-train/images/train.jpg"
+      ],
+      "readme": "https://raw.githubusercontent.com/realyze/pr-train/master/README.md",
+      "created": 1546065509523.3687,
+      "modified": 1546071647456.75,
+      "hooks": {
+        "add": "yarn global add git-pr-train",
+        "update": "yarn global add git-pr-train",
+        "remove": "yarn global remove git-pr-train"
+      }
+    },
+    {
+      "title": "ipqr",
+      "description": "Show your current IP address as a QR code in the terminal",
+      "tags": [
+        "ip",
+        "mobile",
+        "qr"
+      ],
+      "images": [
+        "/static/packs/ipqr/images/ipad.jpg"
+      ],
+      "readme": "https://raw.githubusercontent.com/jordwest/ipqr/master/README.md",
+      "created": 1545449866120.761,
+      "modified": 1545450201835.56,
+      "hooks": {
+        "add": "brew install jordwest/tools/ipqr",
+        "update": "brew upgrade jordwest/tools/ipqr",
+        "remove": "brew uninstall jordwest/tools/ipqr"
+      }
+    },
+    {
+      "title": "jsinterop",
+      "description": "A sample pack that uses JS instead of ReasonML",
+      "tags": [
+        "example",
+        "js"
+      ],
+      "images": [
+        "/static/packs/jsinterop/images/gum.jpg"
+      ],
+      "readme": "/static/packs/jsinterop/README.md",
+      "created": 1544876844588.166,
+      "modified": 1546067130039.03
+    },
+    {
+      "title": "web",
+      "description": "Extended web scripts",
+      "tags": [
+        "canva",
+        "web"
+      ],
+      "images": [
+        "/static/packs/web/images/canva-wide.png"
+      ],
+      "readme": "/static/packs/web/README.md",
+      "created": 1544872108684.6348,
+      "modified": 1546135448865.9468,
+      "hooks": {
+        "add": "node ./WebInstall.bs.js",
+        "remove": "node ./WebUninstall.bs.js"
+      }
+    }
+  ]
+}

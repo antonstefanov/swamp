@@ -1,11 +1,11 @@
-@import 'styles/brand';
+@import "~styles/brand";
 
 .Separator-x {
   position: relative;
   border: 0;
   height: 1px;
   &:after {
-    content: '';
+    content: "";
     display: block;
     width: 80%;
     position: absolute;

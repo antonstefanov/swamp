@@ -12,10 +12,10 @@
     "dev": "webpack-dev-server --progress --inline",
     "webpack:production": "NODE_ENV=production webpack",
     "webpack": "webpack",
-    "clean-deploy": "rm -rf dist/",
-    "deploy": "yarn run webpack && cp -r src/static/ dist/",
-    "full-deploy": "yarn run build && yarn run clean-deploy && yarn run deploy",
-    "prepublishOnly": "yarn run full-deploy"
+    "deploy-clean": "rm -rf dist/",
+    "deploy": "yarn run webpack && cp -r src/public/ dist/",
+    "deploy-full": "yarn run build && yarn run deploy-clean && yarn run deploy",
+    "prepublishOnly": "yarn run deploy-full"
   },
   "dependencies": {
     "den-seed": "^0.4.0",

@@ -25,7 +25,7 @@ let make =
     render: _self =>
       <Layout>
         <Flex direction=Column container=Centered>
-          <Page.Title> {str("Search")} </Page.Title>
+          <Page.Title> {str("tearch")} </Page.Title>
           tip
           <CarbonSearch
             jsonPacks

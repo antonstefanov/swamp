@@ -11,7 +11,7 @@ module.exports = {
     publicPath: "/build/",
   },
   devServer: {
-    contentBase: [path.resolve(__dirname, "./src/static")],
+    contentBase: [path.resolve(__dirname, "./src/public")],
     historyApiFallback: true,
     stats: {
       modules: false,
@@ -20,8 +20,9 @@ module.exports = {
   },
   resolve: {
     alias: {
+      styles: path.resolve(__dirname, "src/public/static/styles"),
+      static: path.resolve(__dirname, "src/public/static"),
       src: path.resolve(__dirname, "src/"),
-      static: path.resolve(__dirname, "src/static"),
     },
   },
   module: {

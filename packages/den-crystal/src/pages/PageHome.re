@@ -4,5 +4,5 @@ let component = ReasonReact.statelessComponent("PageHome");
 
 let make = (~packs: array(Data.Pack.t), _children) => {
   ...component,
-  render: _self => <PageCarbonCards packs title="Home" />,
+  render: _self => <PageCarbonCards packs title="home" />,
 };
