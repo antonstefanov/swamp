@@ -1,7 +1,7 @@
 {
   "name": "den-carbon",
   "private": false,
-  "version": "0.4.2",
+  "version": "0.4.3",
   "license": "MIT",
   "bin": {
     "o": "src/carbon"
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "den-carbon-core": "^0.4.2",
-    "den-packs-core": "^0.4.2",
+    "den-packs-core": "^0.4.3",
     "den-seed": "^0.4.0",
     "jfirwjfiorhgu": "^12.0.6"
   },
