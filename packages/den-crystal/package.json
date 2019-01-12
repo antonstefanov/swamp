@@ -13,7 +13,7 @@
     "watch": "webpack -w",
     "deploy-clean": "rm -rf dist/",
     "deploy-public": "cp -r src/public/ dist/",
-    "deploy": "yarn run webpack && deploy-public",
+    "deploy": "yarn run webpack && yarn run deploy-public",
     "dev": "yarn run deploy-public && yarn run watch",
     "deploy-full": "yarn run build && yarn run deploy-clean && yarn run deploy",
     "prepublishOnly": "yarn run deploy-full"
@@ -42,5 +42,5 @@
     "url": "https://github.com/antonstefanov/swamp"
   },
   "author": "Anton Stefanov",
-  "gitHead": "c53ed6563c27ed977c10f4b5ac2abdffedfe8bf6"
+  "gitHead": "f9bc85e7e8861163880efd6e280df4238435fdf4"
 }
