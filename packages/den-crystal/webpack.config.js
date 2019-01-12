@@ -10,6 +10,7 @@ module.exports = {
     path: path.join(__dirname, "./dist/build"),
     publicPath: "/build/",
   },
+  // not used
   devServer: {
     contentBase: [path.resolve(__dirname, "./src/public")],
     historyApiFallback: true,

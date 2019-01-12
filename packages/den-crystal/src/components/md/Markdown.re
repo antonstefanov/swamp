@@ -20,7 +20,11 @@ let make = (~path: string, _children) => {
     | Loading => <Loading />
     | Result(result) =>
       switch (result) {
-      | Ok(text) => <div dangerouslySetInnerHTML={dangerousHtml(text)} />
+      | Ok(text) =>
+        <div
+          style={ReactDOMRe.Style.make(~width="100%", ())}
+          dangerouslySetInnerHTML={dangerousHtml(text)}
+        />
       | Error((message, stack)) =>
         <Alert accent=Danger>
           <div> {str(message)} </div>

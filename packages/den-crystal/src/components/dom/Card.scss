@@ -36,14 +36,12 @@ $card-radius: $border-radius;
 }
 
 .Card__body {
-  flex: 1 1 auto;
+  flex: 1 auto;
   padding: $spacer * 4;
   display: flex;
   flex-flow: column nowrap;
 }
 
 .Card__text {
-  display: flex;
-  flex: 1;
   margin-bottom: $spacer * 2;
 }

@@ -6,9 +6,6 @@ let bItem = Bem.make(b.element("Item"));
 
 let component = ReasonReact.statelessComponent("Flex");
 
-let getMarginStyle = margin =>
-  ReactDOMRe.Style.make(~marginRight=margin, ~marginBottom=margin, ());
-
 let negative = text => "-" ++ text;
 
 let some = value => Some(value);
@@ -30,6 +27,7 @@ let gap_of_int =
 
 type itemsPerRow =
   | Any
+  | Items1
   | Items2
   | Items3
   | Items4
@@ -38,6 +36,7 @@ type itemsPerRow =
 let string_of_itemsPerRow =
   fun
   | Any => "i-any"
+  | Items1 => "i-1"
   | Items2 => "i-2"
   | Items3 => "i-3"
   | Items4 => "i-4"
@@ -117,7 +116,8 @@ type container =
   | Centered
   | Full;
 
-let getStyle = (~gap, ~justify, ~alignItems, ~alignContent, ~wrap, ~container) => {
+let getStyle =
+    (~gap=?, ~justify, ~alignItems, ~alignContent, ~wrap, ~container) => {
   let gap = gap |> gap_of_int;
   ReactDOMRe.Style.make(
     ~display="flex",
@@ -150,7 +150,8 @@ type items =
 
 let make =
     (
-      ~gap=?,
+      ~gap: option(int)=?,
+      ~gapContainer: option(int)=?,
       ~direction=Row(Any),
       ~usm=?,
       ~sm=?,
@@ -221,7 +222,7 @@ let make =
           ])
         )
         style={getStyle(
-          ~gap,
+          ~gap=?Belt.Option.mapWithDefault(gapContainer, gap, g => Some(g)),
           ~justify,
           ~alignItems,
           ~alignContent,
