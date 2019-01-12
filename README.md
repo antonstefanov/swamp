@@ -64,6 +64,18 @@ in `swamp` folder to:
 - initialise the global CLI
 - optionally add CLI command autocompletion
 
+to run webpack bundler
+
+```sh
+yarn start-crystal
+```
+
+to start static server that serves page (usually used in combination with `yarn start-crystal`)
+
+```sh
+yarn start-server
+```
+
 ---
 
 ## seed

@@ -9,11 +9,12 @@
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --progress --inline",
     "webpack:production": "NODE_ENV=production webpack",
     "watch": "webpack -w",
     "deploy-clean": "rm -rf dist/",
-    "deploy": "yarn run webpack && cp -r src/public/ dist/",
+    "deploy-public": "cp -r src/public/ dist/",
+    "deploy": "yarn run webpack && deploy-public",
+    "dev": "yarn run deploy-public && yarn run watch",
     "deploy-full": "yarn run build && yarn run deploy-clean && yarn run deploy",
     "prepublishOnly": "yarn run deploy-full"
   },
@@ -34,8 +35,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.0.1",
-    "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-cli": "^3.1.1"
   },
   "repository": {
     "type": "git",

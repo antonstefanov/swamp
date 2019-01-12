@@ -6,13 +6,15 @@
   "scripts": {
     "first": "yarn global add bs-platform && yarn run install-build && yarn run init-carbon",
     "install-build": "yarn run build-all",
-    "init-carbon": "cd ./carbon && yarn run install-carbon-dev && o conf init && o conf autocomplete",
+    "init-carbon": "cd ./packages/den-carbon && yarn run install-carbon-dev && o conf init && o conf autocomplete",
     "install-all": "lerna bootstrap",
-    "build-seed": "cd ./packages/seed && yarn build",
-    "build-carbon-core": "cd ./packages/carbon-core && yarn build",
-    "build-carbon": "cd ./packages/carbon && yarn build",
-    "build-crystal": "cd ./packages/crystal && yarn build",
-    "build-all": "yarn run build-seed && yarn run build-carbon-core && yarn run build-carbon && yarn run build-crystal"
+    "build-seed": "cd ./packages/den-seed && yarn build",
+    "build-carbon-core": "cd ./packages/den-carbon-core && yarn build",
+    "build-carbon": "cd ./packages/den-carbon && yarn build",
+    "build-crystal": "cd ./packages/den-crystal && yarn build",
+    "build-all": "yarn run build-seed && yarn run build-carbon-core && yarn run build-carbon && yarn run build-crystal",
+    "start-crystal": "cd ./packages/den-crystal && yarn run dev",
+    "start-server": "cd ./packages/den-carbon && yarn run start-server"
   },
   "devDependencies": {
     "lerna": "^3.8.4"
