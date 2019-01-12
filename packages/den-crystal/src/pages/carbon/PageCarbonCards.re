@@ -8,7 +8,7 @@ let make = (~title: string, ~packs: array(Data.Pack.t), _children) => {
     <Layout>
       <Flex direction=Column container=Centered>
         <Page.Title> {str(title)} </Page.Title>
-        <CarbonCards packs />
+        <CarbonCards packs gapContainer=0 />
       </Flex>
     </Layout>,
 };

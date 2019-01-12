@@ -20,16 +20,25 @@ let renderCard = (pack: Data.Pack.t) =>
     <CarbonTags tags={pack.tags} />
   </Card>;
 
-let make = (~packs: array(Data.Pack.t), ~className=?, _children) => {
+let make =
+    (
+      ~packs: array(Data.Pack.t),
+      ~gap=1,
+      ~gapContainer=?,
+      ~className=?,
+      _children,
+    ) => {
   ...component,
   render: _self =>
     <Flex
-      direction=Column
+      direction={Row(Items1)}
       usm={Row(Items2)}
-      sm={Row(Items3)}
+      sm={Row(Items2)}
+      md={Row(Items3)}
       lg={Row(Items4)}
       container=Normal
-      gap=1
+      gap
+      ?gapContainer
       ?className
       wrap=Wrap>
       ...{packs |> Array.map(renderCard)}
