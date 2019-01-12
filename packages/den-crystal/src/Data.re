@@ -2,8 +2,9 @@ include DenSeed.Packs;
 
 [@bs.val] external require: string => JsInterop.Output.t = "require";
 
-let read = (): t => {
-  let data = require("static/data.json") |> make;
+let parse = json => JsInterop.Output.ofJson(json);
+
+let sortDataPacks = data => {
   data.packs
   |> Array.sort((a: Pack.t, b: Pack.t) =>
        b.modified -. a.modified |> int_of_float
@@ -11,7 +12,14 @@ let read = (): t => {
   data;
 };
 
-let packs_of_data = (data: t) => data.packs |> Array.to_list;
+let fetch = path =>
+  path
+  |> BetterFetch.fetchJson
+  |> BetterFetch.thenMap(result =>
+       result |> parse |> make |> sortDataPacks |> Js.Promise.resolve
+     );
+
+let dirtyFetch = Persist.CacheAsync.make(fetch);
 
 let reduceToIdMap = (packs: list(Pack.t)) =>
   packs

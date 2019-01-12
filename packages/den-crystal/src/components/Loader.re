@@ -1,44 +1,57 @@
-type status('result) =
-  | NotStarted
-  | Loading
-  | Result('result);
-
-type state = {
-  status: status(DenSeed.AsyncResult.t(string)),
-  mounted: ref(bool),
+module type Options = {
+  type t;
+  let name: string;
 };
 
-type action =
-  | Load
-  | Result(DenSeed.AsyncResult.t(string));
+module Make = (T: Options) => {
+  type status =
+    | NotStarted
+    | Loading
+    | Result(T.t);
 
-let component = ReasonReact.reducerComponent("Loader");
-
-let make = (~callback, ~renderChildren, _children) => {
-  let load = ({ReasonReact.send, ReasonReact.state}) => {
-    send(Load);
-    callback()
-    |> Js.Promise.then_(result => {
-         if (state.mounted^) {
-           send(Result(result));
-         };
-         Js.Promise.resolve();
-       })
-    |> ignore;
+  type state = {
+    status,
+    mounted: ref(bool),
   };
-  {
-    ...component,
-    initialState: () => {status: NotStarted, mounted: ref(true)},
-    reducer: (action, state) =>
-      switch (action) {
-      | Load => ReasonReact.Update({...state, status: Loading})
-      | Result(result) =>
-        ReasonReact.Update({...state, status: Result(result)})
+
+  type action =
+    | Load
+    | Result(T.t);
+  let component = ReasonReact.reducerComponent(T.name);
+
+  let make =
+      (~callback: unit => Js.Promise.t(T.t), ~renderChildren, _children) => {
+    let load = ({ReasonReact.send, ReasonReact.state}) => {
+      send(Load);
+      callback()
+      |> Js.Promise.then_(result => {
+           if (state.mounted^) {
+             send(Result(result));
+           };
+           Js.Promise.resolve();
+         })
+      |> ignore;
+    };
+    {
+      ...component,
+      initialState: () => {status: NotStarted, mounted: ref(true)},
+      reducer: (action, state) =>
+        switch (action) {
+        | Load => ReasonReact.Update({...state, status: Loading})
+        | Result(result) =>
+          ReasonReact.Update({...state, status: Result(result)})
+        },
+      didMount: self => load(self),
+      willUnmount: self => {
+        self.state.mounted := false;
       },
-    didMount: self => load(self),
-    willUnmount: self => {
-      self.state.mounted := false;
-    },
-    render: self => renderChildren(self.state.status, () => load(self)),
+      render: self => renderChildren(self.state.status, () => load(self)),
+    };
   };
 };
+
+module String =
+  Make({
+    type t = DenSeed.AsyncResult.t(string);
+    let name = "LoaderString";
+  });

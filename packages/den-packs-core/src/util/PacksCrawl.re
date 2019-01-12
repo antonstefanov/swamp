@@ -135,7 +135,7 @@ let updateCrystalData =
        | Error(err) => Belt.Result.Error(err) |> Js.Promise.resolve
        | Ok(configs) =>
          switch (
-           DenSeed.Fs.swampPath("./den-crystal/dist/")
+           DenSeed.Fs.swampPath("./den-crystal/dist/static/")
            ->ConfWrite.ensureDirExists
          ) {
          /* DenSeed.Fs.swampPath("./den-crystal/src/static/data.json"), */

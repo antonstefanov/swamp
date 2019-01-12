@@ -47,6 +47,7 @@ module JsInterop = {
     [@bs.deriving abstract]
     type t = {packs: array(Json.t)};
     let make = t;
+    external ofJson: Js.Json.t => t = "%identity";
   };
 };
 
