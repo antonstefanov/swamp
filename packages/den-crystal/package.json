@@ -1,7 +1,7 @@
 {
   "name": "den-crystal",
   "private": false,
-  "version": "0.5.3",
+  "version": "0.6.0",
   "license": "MIT",
   "main": "./src/fake-main.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "prepublishOnly": "yarn run deploy-full"
   },
   "dependencies": {
-    "den-seed": "^0.5.0",
+    "den-seed": "^0.6.0",
     "fuse.js": "^3.3.0",
     "marked": "^0.5.2",
     "normalize.css": "^8.0.1",
